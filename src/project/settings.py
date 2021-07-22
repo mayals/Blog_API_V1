@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     # My apps
     'blog.apps.BlogConfig',
+    'blog_api.apps.BlogApiConfig',
     
     # 3rd-party apps
     'rest_framework',
