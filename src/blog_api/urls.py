@@ -5,6 +5,6 @@ from . import views
 app_name='blog_api'
 
 urlpatterns = [
-    path('',views.PostAPIView.as_view(),name='post_api'),
-
+    path('',views.PostListCreateAPIView.as_view()),
+    path('post/<int:id>',views.PostRetrieveUpdateDestroyAPIView.as_view()),
 ]
