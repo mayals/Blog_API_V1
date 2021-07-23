@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #for django alluth
+    'django.contrib.sites',
+
+
     # My apps
     'blog.apps.BlogConfig',
     'blog_api.apps.BlogApiConfig',
@@ -48,7 +52,13 @@ INSTALLED_APPS = [
     # https://django-rest-auth.readthedocs.io/en/latest/installation.html
     'rest_auth',
     
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_auth.registration',
 
+    
     # authtoken app which generates the tokens on the server.
     # It comes included with Django REST Framework but must be added to our
     # INSTALLED_APPS setting """
@@ -161,3 +171,8 @@ REST_FRAMEWORK = {
 
 
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+
+SITE_ID = 1 

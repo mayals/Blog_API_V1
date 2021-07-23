@@ -16,8 +16,11 @@ urlpatterns = [
     
     path('api-auth/', include('rest_framework.urls')), # login   # logout
     path('api/rest-auth/', include('rest_auth.urls')), #rest_password_reset_confirm
+    path('api/rest-auth/registration/',include('rest_auth.registration.urls')),
+
 
     # Simple JWTauthentication
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),
+
 ]
