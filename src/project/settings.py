@@ -130,13 +130,25 @@ STATIC_URL = '/static/'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': 
-                    [
-#           'rest_framework.permissions.AllowAny',# default
-            'rest_framework.permissions.IsAuthenticated',
+    'DEFAULT_PERMISSION_CLASSES': [
+        #'rest_framework.permissions.AllowAny',     # default
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 
-                    ]
 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        
+        # Sessions are used to power the Browsable API and the ability to log in and log out of it.
+        # 'rest_framework.authentication.SessionAuthentication',  # default
+        
+        # BasicAuthentication is used to pass the session ID in the HTTP headers for the API itself.
+        # 'rest_framework.authentication.BasicAuthentication',    # default
+
+        # Simple JWT settings for authentication 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+
+    ],
 
 
 }
