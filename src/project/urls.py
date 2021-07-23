@@ -15,7 +15,7 @@ urlpatterns = [
     path('api/',include('blog_api.urls',namespace='blog_api')),
     
     path('api-auth/', include('rest_framework.urls')), # login   # logout
-    path('api/rest-auth/', include('rest_auth.urls')), #rest_password_reset_confirm
+    path('api/rest-auth/', include('rest_auth.urls')), #rest_password_reset_confirm  .....
     path('api/rest-auth/registration/',include('rest_auth.registration.urls')), #registeration
 
 
