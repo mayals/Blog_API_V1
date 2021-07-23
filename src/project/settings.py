@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'blog_api.apps.BlogApiConfig',
     
-    # 3rd-party apps
+    # https://www.django-rest-framework.org/#installation
     'rest_framework',
-
+    # https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
