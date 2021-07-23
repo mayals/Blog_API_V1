@@ -44,6 +44,14 @@ INSTALLED_APPS = [
     
     # https://www.django-rest-framework.org/#installation
     'rest_framework',
+
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_auth',
+    
+
+    # authtoken app which generates the tokens on the server.
+    # It comes included with Django REST Framework but must be added to our
+    # INSTALLED_APPS setting """
     # https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
     'rest_framework.authtoken',
 ]
