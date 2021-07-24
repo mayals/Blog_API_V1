@@ -4,7 +4,16 @@ from django.urls import path,include
 # Simple JWT
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+# schema
+from rest_framework.schemas import get_schema_view
+from rest_framework.documentation import include_docs_urls
 
+
+
+
+API_TITLE = 'Blog API'
+API_DESCRIPTION = 'A Web API for creating and editing blog posts.'
+schema_view = get_schema_view(title=API_TITLE)
 
 
 urlpatterns = [
@@ -18,9 +27,14 @@ urlpatterns = [
     path('api/rest-auth/', include('rest_auth.urls')), #rest_password_reset_confirm  .....
     path('api/rest-auth/registration/',include('rest_auth.registration.urls')), #registeration
 
-
-    # Simple JWTauthentication
+    # SimpleJWT authentication
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),
 
+    # schema
+    path('api/schema/', schema_view),
+
+    # Documentation
+    path('api/docs/', include_docs_urls(title=API_TITLE,description=API_DESCRIPTION)),
+   
 ]
