@@ -1,5 +1,5 @@
 # Blog-API
-simple API by Django Restframework , i have used this :
+simple API by Django Restframework , i have used :
 
 Django==3.2.5
 django-allauth==0.45.0
