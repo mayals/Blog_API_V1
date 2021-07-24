@@ -5,15 +5,20 @@ from django.urls import path,include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # schema
-from rest_framework.schemas import get_schema_view
+# from rest_framework.schemas import get_schema_view
+
+# swagger
+from rest_framework_swagger.views import get_swagger_view
+
+
+# documentation 
 from rest_framework.documentation import include_docs_urls
-
-
 
 
 API_TITLE = 'Blog API'
 API_DESCRIPTION = 'A Web API for creating and editing blog posts.'
-schema_view = get_schema_view(title=API_TITLE)
+# schema_view = get_schema_view(title=API_TITLE)
+schema_view = get_swagger_view(title=API_TITLE)
 
 
 urlpatterns = [
@@ -32,7 +37,12 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view()),
 
     # schema
-    path('api/schema/', schema_view),
+    # path('api/schema/', schema_view),
+    
+    
+    # swagger
+    path('swagger-docs/', schema_view),
+
 
     # Documentation
     path('api/docs/', include_docs_urls(title=API_TITLE,description=API_DESCRIPTION)),

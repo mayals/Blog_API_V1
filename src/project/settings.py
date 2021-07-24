@@ -46,25 +46,34 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'blog_api.apps.BlogApiConfig',
     
+
     # https://www.django-rest-framework.org/#installation
     'rest_framework',
 
-    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
-    'rest_auth',
-    
-    
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'rest_auth.registration',
 
-    
     # authtoken app which generates the tokens on the server.
     # It comes included with Django REST Framework but must be added to our
     # INSTALLED_APPS setting """
     # https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
     'rest_framework.authtoken',
+
+
+
+    # https://django-rest-swagger.readthedocs.io/en/latest/
+    'rest_framework_swagger',
+    
+
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_auth',
+    'rest_auth.registration',
+    
+
+    # https://django-allauth.readthedocs.io/en/latest/installation.html
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',   
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -165,10 +174,12 @@ REST_FRAMEWORK = {
 
         # Simple JWT settings for authentication 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-
-
     ],
 
+
+    'DEFAULT_SCHEMA_CLASS': [
+        'rest_framework.schemas.coreapi.AutoSchema'
+    ],
 
 }
 
@@ -177,3 +188,5 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 
 SITE_ID = 1 
+
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
