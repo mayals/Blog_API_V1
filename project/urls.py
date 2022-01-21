@@ -35,17 +35,19 @@ urlpatterns = [
     
     ############## rest_framework #################################################################################
     # rest_framework
-    # path('rest_framework/', include('rest_framework.urls')),
+    path('rest_framework/', include('rest_framework.urls', namespace='rest_framework')),
 
     # login in small login box  but go automatically to http://127.0.0.1:8000/accounts/profile/!
-    path('rest_framework/login/', include('rest_framework.urls')),
-    path('rest_framework/logout/', include('rest_framework.urls')),   # logout then automatically go to admin logout page ! 
+    path('rest_framework/login/',
+         include('rest_framework.urls', namespace='rest_framework_login')),
+    # logout then automatically go to admin logout page !
+    path('rest_framework/logout/',include('rest_framework.urls', namespace='rest_framework_logout')),
 
  
 
 
     ############## rest_auth ######################################################################################
-    # path('rest_auth/', include('rest_auth.urls')), 
+    path('rest_auth/', include('rest_auth.urls')),
     
     # rest_password_reset
     # work ok but go to error page Password Reset Confirm  need Accepts the following POST parameters: token, uid,new_password1, new_password2
@@ -54,25 +56,29 @@ urlpatterns = [
     # work ok but contain field token, uid,new_password1, new_password2 all required to full 
     path('rest_auth/password/reset/confirm/', include('rest_auth.urls')),
     # rest_login
-    path('rest_auth/login/', include('rest_auth.urls')), # it is work ok go red page of django rest framework 
+    # it is work ok go red page of django rest framework
+    path('rest_auth/login/', include('rest_auth.urls')),
     # rest_logout
-    path('rest_auth/logout/', include('rest_auth.urls')),  # it is work ok 
+    path('rest_auth/logout/', include('rest_auth.urls')),  # it is work ok
     # rest_user_details
-    path('rest_auth/user/', include('rest_auth.urls')), # work ok display request user detail information
+    # work ok display request user detail information
+    path('rest_auth/user/', include('rest_auth.urls')),
     # rest_password_change
-    path('rest_auth/password/change/',include('rest_auth.urls')), # work ok  give 2 fields new pass new passconfirm to change password in the same page 
+    # work ok  give 2 fields new pass new passconfirm to change password in the same page
+    path('rest_auth/password/change/', include('rest_auth.urls')),
    
   
     
 
     ############## rest_auth.registration ###################################
-    path('rest_auth/registration/',include('rest_auth.registration.urls')),  # work ok registeration ad give you long number name it kay !
+    # work ok registeration ad give you long number name it kay !
+    path('rest_auth/registration/',include('rest_auth.registration.urls')),
     
 
 
 
     ### SimpleJWT authentication ########################################
-    path('token_obtain_pair/', TokenObtainPairView.as_view()), # work ok 
+    path('token_obtain_pair/', TokenObtainPairView.as_view()),  # work ok
     path('token_refresh/', TokenRefreshView.as_view()), # work ok 
 
 
@@ -80,7 +86,7 @@ urlpatterns = [
     # schema ###################################
     # path('api/schema/', schema_view),
     
-    
+
     
     ##### swagger #######################################
     path('swagger-docs/', schema_view),
