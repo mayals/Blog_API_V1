@@ -31,18 +31,21 @@ urlpatterns = [
     # blog_api
     path('blog_api/', include('blog_api.urls', namespace='blog_api')),
     
-    #---------------------------------------------------- 
-
+    
+    
+    ############## rest_framework #################################################################################
     # rest_framework
-    path('rest_framework/', include('rest_framework.urls')),
+    # path('rest_framework/', include('rest_framework.urls')),
 
     # login in small login box  but go automatically to http://127.0.0.1:8000/accounts/profile/!
     path('rest_framework/login/', include('rest_framework.urls')),
     path('rest_framework/logout/', include('rest_framework.urls')),   # logout then automatically go to admin logout page ! 
 
  
-    ############## rest_auth ###################################
-    path('rest_auth/', include('rest_auth.urls')), 
+
+
+    ############## rest_auth ######################################################################################
+    # path('rest_auth/', include('rest_auth.urls')), 
     
     # rest_password_reset
     # work ok but go to error page Password Reset Confirm  need Accepts the following POST parameters: token, uid,new_password1, new_password2
@@ -66,19 +69,25 @@ urlpatterns = [
     path('rest_auth/registration/',include('rest_auth.registration.urls')),  # work ok registeration ad give you long number name it kay !
     
 
-    # SimpleJWT authentication
+
+
+    ### SimpleJWT authentication ########################################
     path('token_obtain_pair/', TokenObtainPairView.as_view()), # work ok 
     path('token_refresh/', TokenRefreshView.as_view()), # work ok 
 
-    # schema
+
+
+    # schema ###################################
     # path('api/schema/', schema_view),
     
     
-    # swagger
+    
+    ##### swagger #######################################
     path('swagger-docs/', schema_view),
 
 
-    # Documentation
+
+    ### Documentation #######################################
     path('api/docs/', include_docs_urls(title=API_TITLE,description=API_DESCRIPTION)),
    
 ]
